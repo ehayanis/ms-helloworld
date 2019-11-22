@@ -33,8 +33,10 @@ pipeline {
         }
 
         stage('Docker push'){
-        	docker.withRegistry('https://438657604705.dkr.ecr.us-west-2.amazonaws.com', 'ecr:us-west-2:ecr-creds') {
-    			docker.image('eka').push('0.1.0')
+        	steps {
+        		docker.withRegistry('https://438657604705.dkr.ecr.us-west-2.amazonaws.com', 'ecr:us-west-2:ecr-creds') {
+    				docker.image('eka').push('0.1.0')
+  				}
   			}
         }
     }
